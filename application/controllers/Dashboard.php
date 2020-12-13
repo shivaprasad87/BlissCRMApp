@@ -2208,8 +2208,8 @@ $query = $this->callback_model->add_callback_data($ind_callback_data);
             public function testMe($value='')
     {
          require_once  FCPATH. "quickstart.php";
-             $location = $this->input->post('location')?$this->input->post('location'):'Bangalore';
-             $data = array(1047,'shivas8787@gmail.com','callback','2020-12-15T10:20:00+05:30',$location,'2020-12-15T10:20:00+05:30');
+             $location = 'Bangalore';
+             $data = array(2,'shivas8787@gmail.com','callback','2020-12-15T10:20:00+05:30',$location,'2020-12-15T10:20:00+05:30');
              Gcalendar($data);
     }
  }
