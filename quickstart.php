@@ -1,9 +1,9 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
-//echo "correct Path";
-// if (php_sapi_name() != 'cli') {
-//     throw new Exception('This application must be run on the command line.');
-// }
+echo "correct Path";
+if (php_sapi_name() != 'cli') {
+    throw new Exception('This application must be run on the command line.');
+}
 
 /**
  * Returns an authorized API client.
@@ -61,8 +61,8 @@ function getClient()
 // //echo $cal_data[0]."<br>";
 // print_r($cal_data);
 // Gcalendar($cal_data);
- function Gcalendar($data='')
-{
+//  function Gcalendar($data='')
+// {
 // Get the API client and construct the service object.
 $client = getClient();
 $service = new Google_Service_Calendar($client);
@@ -114,10 +114,10 @@ $event = new Google_Service_Calendar_Event(array(
 $calendarId = 'primary';
 $event = $service->events->insert($calendarId, $event);
 //printf('Event created: %s\n', $event->htmlLink);
-}
+//}
 /**************************************/
 
-/*if (empty($events)) {
+if (empty($events)) {
     print "No upcoming events found.\n";
 } else {
     print "Upcoming events:\n";
@@ -128,4 +128,4 @@ $event = $service->events->insert($calendarId, $event);
         }
         printf("%s (%s)\n", $event->getSummary(), $start);
     }
-}*/
+}
