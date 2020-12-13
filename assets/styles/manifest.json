@@ -1,0 +1,10 @@
+{
+  "name": "Bliss Realty",
+  "short_name": "DEMO",
+  "theme_color": "#2196f3",
+  "background_color": "#3784c1",
+  "display": "standalone",
+  "Scope": "/",
+  "start_url": ".",
+  "splash_pages": null
+}
