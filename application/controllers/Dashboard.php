@@ -1449,7 +1449,7 @@ class Dashboard extends CI_Controller {
                 'date'=>$this->input->post('notdone_date'), 
                 'reason'=>$this->input->post('notdone_reason'), 
                 'type'=>'4',
-                'date_added'=>date('Y-m-d H:s:i'),
+                'date_added'=>date('Y-m-d H:i:s'),
             );
             $query=$this->callback_model->add_extra_details($param);
             $params = array('flag'=>0);
