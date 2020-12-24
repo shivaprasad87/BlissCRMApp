@@ -1480,8 +1480,8 @@ class Dashboard extends CI_Controller {
             $update_data['due_date'] = $date_due.":00";
         }
        
-        if($this->input->post('important') !== null)
-        { 
+        if($this->input->post('important') != 0)
+        {  
 
             $g_date = $this->input->post('due_date');
             $update_data['important'] = $this->input->post('important')?1:0;
