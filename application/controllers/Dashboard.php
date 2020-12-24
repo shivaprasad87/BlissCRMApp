@@ -1481,14 +1481,14 @@ class Dashboard extends CI_Controller {
         }
        
         if($this->input->post('important') != 0)
-        {  
+        {   
 
             $g_date = $this->input->post('due_date');
             $update_data['important'] = $this->input->post('important')?1:0;
              require_once  FCPATH. "quickstart.php";
              $location = $this->common_model->get_city_name($this->session->userdata('user_city_id'));
              $location = trim($location)?$location:'Bangalore';
-             $data = array($id,$this->session->userdata('email'),$this->input->post('current_callback'),$g_date.'+05:30',$location,$g_date.'+05:30'); 
+             $data = array($id,$this->session->userdata('user_email'),$this->input->post('current_callback'),$g_date.'00+05:30',$location,$g_date.'00+05:30'); 
 
              //print_r($data);die;
              Gcalendar($data);
