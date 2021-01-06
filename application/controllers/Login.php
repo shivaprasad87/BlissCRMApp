@@ -52,7 +52,7 @@ class Login extends CI_Controller {
                             break;
                         
                     }  
-                    if( $user_type == 'user')
+                    if( $user_type == 'user' || $user_type == 'manager')
                     { 
                         $date1 = date('Y-m-d',strtotime($data->login_time));
                          // echo $date1."   ". date('Y-m-d');die;
@@ -87,7 +87,7 @@ class Login extends CI_Controller {
                     }
                     else
                     {
-                        $this->session->set_flashdata('error', 'Only Users Can Login Using This App');
+                        $this->session->set_flashdata('error', 'Only Users And Managers Can Login Using This App');
 
                     }
                 }
