@@ -113,14 +113,10 @@ $this->load->view('inc/header');
      </div>
     <form  action="<?php echo base_url()?>generate_callback" method="POST" enctype="multipart/form-data">
         <div class="row">
-            <div class="col-md-3 form-group">
+            <div class="col-md-3 form-group" hidden="">
                 <label for="emp_code">Dept:</label>
                 <select  class="form-control"  id="dept" name="dept" required >
-                    <option value="">Select</option>
-                    <?php $all_department=$this->common_model->all_active_departments();
-                    foreach($all_department as $department){ ?>
-                        <option value="<?php echo $department->id; ?>"><?php echo $department->name; ?></option>
-                    <?php }?>           
+                   <option value="1">Sales</option>      
                 </select>
             </div>
 
@@ -134,19 +130,15 @@ $this->load->view('inc/header');
                 <input type="number" class="form-control" id="contact_no1" name="contact_no1" placeholder="Contact No">
             </div>
 
-            <div class="col-sm-3 form-group">
+            <!-- <div class="col-sm-3 form-group">
                 <label for="name">Contact No 2:</label>
                 <input type="number" class="form-control" id="contact_no2" name="contact_no2" placeholder="Contact No">
-            </div>
+            </div> -->
             
-            <div class="col-md-3 form-group">
+            <div class="col-md-3 form-group" hidden="">
                 <label for="assign">Call back type:</label>
                 <select  class="form-control"  id="callback_type" name="callback_type" required="required" >
-                    <option value="">Select </option>
-                    <?php $all_callback_types=$this->common_model->all_active_callback_types();
-                    foreach($all_callback_types as $callback_type){ ?>
-                        <option value="<?php echo $callback_type->id; ?>"><?php echo $callback_type->name; ?></option>
-                    <?php }?>            
+                   <option value="1">Domestic</option>          
                 </select>
             </div>
 
@@ -155,10 +147,10 @@ $this->load->view('inc/header');
                 <input type="email" class="form-control" id="email1" name="email1" placeholder="Email">
             </div>
 
-            <div class="col-sm-3 form-group">
+            <!-- <div class="col-sm-3 form-group">
                 <label for="email">Email2:</label>
                 <input type="email" class="form-control" id="email2" name="email2" placeholder="email">
-            </div>
+            </div> -->
 
             <div class="col-md-3 form-group">
                 <label for="emp_code">Project:</label>
@@ -201,7 +193,7 @@ $this->load->view('inc/header');
                 <input type="text" class="form-control" id="leadId" name="leadId" placeholder="Lead Id">
             </div> -->
 
-            <div class="col-md-3 form-group">
+            <div class="col-md-3 form-group" hidden="">
                 <label for="assign">User Name:</label>
                 <select  class="form-control"  id="user_name" name="user_name" required="required" >
                      <option value="">Select</option>
@@ -225,7 +217,7 @@ $this->load->view('inc/header');
                                 break;
                         }
                         ?>
-                        <option value="<?php echo $user->id ?>"><?php echo $user->first_name." ".$user->last_name." ($role)"; ?></option>
+                        <option value="<?php echo $user->id ?>" <?php if($this->session->userdata("user_id")==$user->id) echo"selected"; ?>><?php echo $user->first_name." ".$user->last_name." ($role)"; ?></option>
                     <?php } ?>               
                 </select>
             </div>
@@ -241,14 +233,10 @@ $this->load->view('inc/header');
                 </select>
             </div>
       
-            <div class="col-md-3 form-group">
+            <div class="col-md-3 form-group" hidden="">
                 <label for="assign">Status:</label>
                 <select  class="form-control"  id="status" name="status" required="required" >
-                    <option value="">Select</option>
-                    <?php $statuses= $this->common_model->all_active_statuses(); 
-                    foreach( $statuses as $status){ ?>
-                        <option value="<?php echo $status->id; ?>"><?php echo $status->name ?></option>
-                    <?php } ?>
+                    <option value="1">New</option>
                 </select>
             </div>
 
@@ -278,13 +266,13 @@ $this->load->view('inc/header');
                     The email already used
                 </div>
             </div>
-            
-            <div class="col-sm-6 form-group">
-                <a class="btn btn-danger btn-block" onclick="reset_data()">Cancel</a>
-            </div>
             <div class="col-sm-6 form-group">
                 <button type="submit" id="save" class="btn btn-success btn-block">Save</button>
             </div>
+            <div class="col-sm-6 form-group">
+                <a class="btn btn-danger btn-block" onclick="reset_data()">Reset</a>
+            </div>
+            
         </div>
     </form>
                                     </div>
@@ -389,4 +377,101 @@ $this->load->view('inc/header');
 
             </div>
         </div>
-\
+
+        <script type="text/javascript">
+        $(document).ready(function(){
+    function changesource(){
+        var a  = this.value;
+        if('6'==a)
+        {
+            $("#abc").show();
+            $("#ref_by").attr("required",true);
+        }
+        else
+        {
+            $("#abc").hidden();
+        }
+    }
+    $("#lead_source").on("change", changesource);
+});
+    function reset_data(){
+        $('#name').val('');
+        $('#contact_no1').val('');
+        $('#contact_no2').val('');
+        $('#email1').val('');
+        $('#email2').val('');
+        $('#lead_source').val();
+        $('#project').val();
+        $('#leadId').val();
+        $('#assign').val();
+        $('#due_date').val('');
+
+        $('#dept').val('0').change();
+        $('#callback_type').val('0').change();
+        $('#project').val('0').change();
+        $('#lead_source').val('0').change();
+    }
+
+    $(document).ready(function(){
+        var con1=$('#contact_no1').val();
+        var con2=$('#contact_no2').val();
+        if(con1=='' && con2==''){
+            $('#contact_no1').prop('required',true);
+        }
+        
+        var em1=$('#email1').val();
+        var em2=$('#email2').val();
+        if(em1=='' && em2==''){
+            $('#email1').prop('required',true);
+        }
+
+        $("#contact_no1, #contact_no2").keyup(function(){
+            if($(this).val() != ''){
+                $.getJSON( "<?php echo base_url()?>admin/check_isnumberexists/"+$(this).val(), function( data ) {
+                    if(data.exists){
+                        $('#phone_error').show();
+                        $(this).focus();
+                        $("#save").attr('disabled',true);
+                    }
+                    else{
+                        $('#phone_error').hide();
+                        $("#save").attr('disabled',false);
+                    }
+                });
+            }
+        });
+           $("#leadId").keyup(function(){
+            if($(this).val() != ''){
+                $.getJSON( "<?php echo base_url()?>admin/check_isleadexists/"+$(this).val(), function( data ) {
+                    if(data.exists){
+                        $('#leadid_error').show();
+                        $(this).focus();
+                        $("#save").attr('disabled',true);
+                    }
+                    else{
+                        $('#leadid_error').hide();
+                        $("#save").attr('disabled',false);
+                    }
+                });
+            }
+        });
+
+        $("#email1, #email2").keyup(function(){
+            if($(this).val() != ''){
+                $.getJSON( "<?php echo base_url()?>admin/check_isemailexists?email="+encodeURIComponent($(this).val()), function( data ) {
+                    if(data.exists){
+                        $('#email_error').show();
+                        $(this).focus();
+                        $("#save").attr('disabled',true);
+                    }
+                    else{
+                        $('#email_error').hide();
+                        $("#save").attr('disabled',false);
+                    }
+                });
+            }
+        });
+
+    });
+</script>
+
