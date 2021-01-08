@@ -53,6 +53,10 @@
                             <i><?php if(isset($callsDone['totalCalls'])){echo $callsDone['totalCalls'] ? $callsDone['totalCalls'] : 0; }else{echo 0;}?></i>
                             <span>Calls Done Today</span>
                         </a>
+                        <a href="<?=base_url('generate_callback');?>"class="bg-dar-pink round-small  scale-hover">
+                            <i class="fas fa-plus"></i>
+                            <span>Generate</span>
+                        </a>
 
                         
                     <!--  <a href="<?=base_url('dashboard/Registration_email');?>" class="bg-gradient-blue2 round-small  scale-hover">

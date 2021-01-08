@@ -60,19 +60,6 @@ $route['update_callback_details'] = 'dashboard/update_callback_details';
 $route['imp_callbacks'] = 'dashboard/imp_callbacks';
 $route['thankyou_mail'] = 'dashboard/thankyou_mail';
 $route['nextday_calls'] = 'dashboard/nextday_calls';
-
-
-
-
-
-
-
-
-
-
-
-
-
+$route['generate_callback'] = 'dashboard/generate_callback';
 $route['404_override'] = ''; 
-
 $route['translate_uri_dashes'] = FALSE;
