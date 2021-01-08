@@ -495,7 +495,7 @@ class Dashboard extends CI_Controller {
                 'email2'=>$email2,
                 'project_id'=>$project,
                 'lead_source_id'=>$lead_source,
-                'leadid'=>trim("DEMO-".sprintf("%'.011d",$leadId).PHP_EOL),
+                'leadid'=>trim("BLS-".sprintf("%'.011d",$leadId).PHP_EOL),
                 'user_id'=>$this->session->userdata("user_id"),
                 'due_date'=>$due_date,
                 'broker_id'=>$sub_broker,
