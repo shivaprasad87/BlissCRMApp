@@ -628,7 +628,7 @@ class Admin extends CI_Controller {
 			$update_data['important'] = $this->input->post('important')?1:0;
 			 require_once  FCPATH. "quickstart.php";
 			 $location = $this->input->post('location')?$this->input->post('location'):'Bangalore';
-			 $data = array($id,$this->session->userdata('email'),$this->input->post('current_callback'),$this->input->post('cal_date_from').'+05:30',$location,$this->input->post('cal_date_from').'+05:30'); 
+			 $data = array($id,$this->session->userdata('user_email'),$this->input->post('current_callback'),$this->input->post('cal_date_from').'+05:30',$location,$this->input->post('cal_date_from').'+05:30'); 
        		 Gcalendar($data);
        //print_r($data);
 		}
