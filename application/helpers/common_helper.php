@@ -20,7 +20,7 @@ if ( ! function_exists('email_config'))
         // $config['wordwrap'] = TRUE;
         // $config['mailtype'] = 'html';
         $config['protocol']='smtp';
-        $config['smtp_host']='ssl://smtp.gmail.com';
+        $config['smtp_host']='smtp.gmail.com';
         $config['smtp_port']='465';
         $config['smtp_timeout']='30';
         $config['smtp_user']='crmcalendar05@gmail.com';
