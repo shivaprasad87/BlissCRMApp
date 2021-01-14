@@ -477,8 +477,7 @@ class Dashboard extends CI_Controller {
             $email1=$this->input->post('email1');
             $email2=$this->input->post('email2');
             $project=$this->input->post('project');
-            $lead_source=$this->input->post('lead_source');
-           // $leadId=$this->input->post('leadId');
+            $lead_source=$this->input->post('lead_source'); 
             $lead_ids = json_decode(json_encode($this->callback_model->get_last_id()),true);
             $leadId = $lead_ids['id']+1;
             $due_date=$this->input->post('due_date');
