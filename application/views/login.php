@@ -12,7 +12,7 @@ $this->load->view('inc/header');
                     <!-- <h3 class="inner-tittle t-inner">DEMO Login</h3> -->
                     <div class="buttons login">
                         <ul>
-                            <a href="login.html"><img src="<?=base_url('assets/');?>images/logo.png" style="width:30%;"></a>
+                            <a href="#"><img src="<?=base_url('assets/');?>images/logo.png" style="width:30%;"></a>
                             <div class="clearfix"></div>
                         </ul>
                     </div>
