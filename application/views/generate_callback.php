@@ -31,8 +31,8 @@ $this->load->view('inc/header');
 
         <link rel="stylesheet" type="text/css" href="<?=base_url('assets/')?>styles/framework.css">
 
-        <body class="theme-light" onload="myFunction()" style="margin:0;" data-highlight="blue2">
-            <div id="loader"></div>
+        <body class="theme-light"  onload="myFunction()" style="margin:0;" data-highlight="blue2">
+<div class="se-pre-con" id="loader"></div>    
             <div id="page">
                 <?php
                     $this->load->view('inc/fixed_header');
@@ -267,7 +267,7 @@ $this->load->view('inc/header');
                 </div>
             </div>
             <div class="col-sm-6 form-group">
-                <button type="submit" id="save" class="btn btn-success btn-block">Save</button>
+                <button type="submit" id="save" class="btn btn-success btn-block" onclick='$(".se-pre-con").show();'>Save</button>
             </div>
             <div class="col-sm-6 form-group">
                 <a class="btn btn-danger btn-block" onclick="reset_data()">Reset</a>
